@@ -6,18 +6,25 @@ using System.Threading.Tasks;
 
 namespace Task1
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
-            //Q1 a
+
             Console.WriteLine("Insert numer:");
             var char1 = Console.ReadLine();
-            if (int.TryParse(char1?.ToString(), out int number));
-            Console.WriteLine(IsPrime(number));
+            if (!int.TryParse(char1, out int number)) return;
+          
+
+            Func<int,bool> pintIsPrime= new Func<int, bool>(IsPrime);
+
+            //Q1.c
+            var result = Memorize(pintIsPrime).Invoke(number);
+            Console.WriteLine($"{number} is prime? {result}");
+
             Main(args);
         }
-
+        //Q1.a
         private static bool IsPrime(int number)
         {
             switch (number)
@@ -38,6 +45,21 @@ namespace Task1
             }
 
             return true;
+        }
+
+        //Q1.b
+        public static  Func<TParameter, TOutput> Memorize<TParameter, TOutput>(this Func<TParameter, TOutput> method)
+        {
+            var map = new Dictionary<TParameter, TOutput>();
+            return a =>
+            {
+                TOutput value;
+                if (map.TryGetValue(a, out value))
+                    return value;
+                value = method(a);
+                map.Add(a, value);
+                return value;
+            };
         }
     }
 }
