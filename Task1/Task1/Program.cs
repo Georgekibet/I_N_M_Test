@@ -48,7 +48,7 @@ namespace Task1
         }
 
         //Q1.b
-        public static  Func<TParameter, TOutput> Memorize<TParameter, TOutput>(this Func<TParameter, TOutput> method)
+        private static  Func<TParameter, TOutput> Memorize<TParameter, TOutput>(this Func<TParameter, TOutput> method)
         {
             var map = new Dictionary<TParameter, TOutput>();
             return a =>
@@ -60,6 +60,18 @@ namespace Task1
                 map.Add(a, value);
                 return value;
             };
+        }
+
+        private static int Search(object[] collection, object value)
+        {
+            for (int i = 0; i < collection.Length; i++)
+            {
+                if (value==collection[i])
+                {
+                    return 1;
+                }
+            }
+            return -1;
         }
     }
 }
