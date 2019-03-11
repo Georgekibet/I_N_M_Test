@@ -32,21 +32,18 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="active" onclick="location.href = '@(Url.Action("Details", "Home", new {id = item.Id}))'">
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Gender)
-                </td>
-
-
-                <td>
+                </td><td>
 
                     @Html.DisplayFor(modelItem => item.Height)
                 </td>
                 <td>
-                    @* @Html.ActionLink("Details", "Details", new { id = item.Homeworld })*@
+
                     @Html.ActionLink("Details", "Details", new {controller = "Home", id = item.Id}, new {target = "_blank"})
                 </td>
                 <td>
