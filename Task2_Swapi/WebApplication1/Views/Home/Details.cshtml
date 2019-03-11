@@ -1,1 +1,95 @@
-﻿
+﻿@{
+    ViewBag.Title = "Details";
+}
+@model WebApplication1.Models.CharacterDetails
+
+<h2>@Model.Name</h2>
+@*<h3>@*@
+<div>
+    @using (Html.BeginForm("SetAsFavourite", "Home", FormMethod.Post))
+    {
+
+
+        <img src="@Url.Content(Model.ImgageUrl)" alt="Image" /> @Html.CheckBoxFor(s => s.IsVavourite)
+        <br />
+        @Html.HiddenFor(model => model.Url)
+
+        <input type="submit" value="Save" />
+
+    }
+    <br/>
+    <h3>ViewBag.Message</h3> 
+</div>
+
+<address>
+
+    EyeColor:   @Model.Eye_color<br />
+    HomeWorld:   @Model.Homeworld<br />
+    Height:   @Model.Height<br />
+    Gender:   @Model.Gender<br />
+    Mass:   @Model.Mass<br />
+    Url:   @Model.Url<br />
+    FILMS:
+    <div>
+        <table>
+            <tbody>
+                @foreach (var item in Model.Films)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(d => item)</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+    Species:
+    <div>
+        <table>
+            <tbody>
+                @foreach (var item in Model.Species)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(d => item)</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    StarShips:
+    <div>
+        <table>
+            <tbody>
+            @foreach (var item in Model.Starships)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(d => item)</td>
+                </tr>
+            }
+           
+            </tbody>   
+        </table>
+    </div>
+  Vehicles:
+    <div>
+        <table>
+            <tbody>
+            @foreach (var item in Model.Vehicles)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(d => item)</td>
+                </tr>
+            }
+           
+            </tbody>   
+        </table>
+    </div>
+
+</address>
+
+<address>
+    Created:   @Model.Created<br />
+    Edited:   @Model.Edited<br /> 
+</address>

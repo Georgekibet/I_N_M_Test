@@ -8,8 +8,8 @@ namespace WebApplication1.Models
     public class CharacterDetails :Character
     {
         public string Homeworld { get; set; }
-        public int Eye_color { get; set; }
-        public int Skin_color { get; set; }
+        public string Eye_color { get; set; }
+        public string Skin_color { get; set; }
         public int Mass { get; set; }
         public List<string> Films { get; set; }
         public List<string> Species { get; set; }
