@@ -21,8 +21,15 @@ namespace Task1
             //Q1.c
             var result = Memorize(pintIsPrime).Invoke(number);
             Console.WriteLine($"{number} is prime? {result}");
-
-            Main(args);
+            Console.ReadLine();
+            Console.WriteLine("Question 2");
+            object[] list= new object[]{3,4,9,4,6,7,8};
+            Console.WriteLine("Search 7 in 3,4,9,4,6,7,8");
+            Console.WriteLine("Result: "+Search(list,7));
+            object[] list2= new object[]{ "r", "t", "y", "h", "j", "k", "l" };
+            Console.WriteLine("Search y in r,t,y,h,j,k,l");
+            Console.WriteLine("Result: "+Search(list2,"y"));
+            Console.ReadLine();
         }
         //Q1.a
         private static bool IsPrime(int number)
@@ -66,9 +73,9 @@ namespace Task1
         {
             for (int i = 0; i < collection.Length; i++)
             {
-                if (value==collection[i])
+                if (value.ToString()==collection[i].ToString())
                 {
-                    return 1;
+                    return i;
                 }
             }
             return -1;

@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model IEnumerable<WebApplication1.Models.Character>
+<div >
+    <h1>Star wars</h1>
+
+</div>
+
+<div class="row">
+    <table width="400" id="tablesorter-demo" class="table-responsive">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+             Is Favorite
+            </th>
+            <th>
+             
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+              
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @if(item.IsVavourite)
+                {
+                    <img src= "@Url.Content(item.ImgageUrl)" alt="Image" />
+                }
+                
+            </td>
+                <td>
+                   @* @Html.ActionLink("Details", "Details", new { id = item.Homeworld })*@
+                    @Html.ActionLink("Details", "Details", new { controller = "Home", id = item.Id }, new { target = "_blank" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
